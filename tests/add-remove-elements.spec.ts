@@ -1,16 +1,12 @@
-import { test, expect } from '@playwright/test';
-import { MainPage } from '../pages/main-page';
-import { AddRemoveElementsPage } from '../pages/add-remove-elements-page';
+import { test } from '../fixture-pages';
+import { expect } from '@playwright/test';
 
 test.describe('Add/Remove Elements page', () => {
-    test.beforeEach(async ({ page }) => {
-      const mainPage = new MainPage(page);
-      await mainPage.navigateTo(`add_remove_elements/`);
+    test.beforeEach(async ({ mainPage }) => {
+        await mainPage.navigateTo(`add_remove_elements/`);
     });
 
-    test('Verify page elements', async ({ page }) => {
-        const addRemoveElementsPage = new AddRemoveElementsPage(page);
-
+    test('Verify page elements', async ({ addRemoveElementsPage }) => {
         const header = await addRemoveElementsPage.getPageHeader();
         const addElementButton = addRemoveElementsPage.getAddElementButton();
         const deleteElementButtons = addRemoveElementsPage.getDeleteElementButtons();
@@ -21,8 +17,7 @@ test.describe('Add/Remove Elements page', () => {
         expect(deleteElementButtons).toHaveCount(0);
     });
 
-    test('Verify adding and deleting of an element', async ({ page }) => {
-        const addRemoveElementsPage = new AddRemoveElementsPage(page);
+    test('Verify adding and deleting of an element', async ({ addRemoveElementsPage }) => {
         const deleteElementButtons = addRemoveElementsPage.getDeleteElementButtons();
 
         // Add an element
@@ -35,8 +30,7 @@ test.describe('Add/Remove Elements page', () => {
         await expect(deleteElementButtons).toHaveCount(0);
     });
 
-    test('Verify adding and deleting of multiple elements', async ({ page }) => {
-        const addRemoveElementsPage = new AddRemoveElementsPage(page);
+    test('Verify adding and deleting of multiple elements', async ({ addRemoveElementsPage }) => {
         const addButtonCount = 5;
 
         // Add multiple elements
@@ -45,10 +39,10 @@ test.describe('Add/Remove Elements page', () => {
         }
 
         // Verify that 5 delete buttons are present
-        await expect(addRemoveElementsPage.getDeleteElementButtons()).toHaveCount(addButtonCount);
+        const deleteButtons = addRemoveElementsPage.getDeleteElementButtons();
+        await expect(deleteButtons).toHaveCount(addButtonCount);
 
         // Remove all added elements
-        const deleteButtons = addRemoveElementsPage.getDeleteElementButtons();
         for (let i = 0; i < addButtonCount; i++) {
             await deleteButtons.nth(0).click(); 
             await expect(deleteButtons).toHaveCount(addButtonCount - i - 1); 
