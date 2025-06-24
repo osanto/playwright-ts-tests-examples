@@ -4,6 +4,8 @@ import { ABTestingPage } from './pages/ab-testing-page';
 import { AddRemoveElementsPage } from './pages/add-remove-elements-page';
 import { CheckboxesPage } from './pages/checkboxes-page';
 import { ContextMenuPage } from './pages/context-menu-page';
+import { DropdownPage } from './pages/dropdown-page';
+
 
 type Pages = {
     mainPage: MainPage;
@@ -11,6 +13,7 @@ type Pages = {
     addRemoveElementsPage: AddRemoveElementsPage;
     checkboxesPage: CheckboxesPage; 
     contextMenuPage: ContextMenuPage;
+    dropdownPage: DropdownPage;
 }
 
 export const test = base.extend<Pages>({
@@ -33,5 +36,9 @@ export const test = base.extend<Pages>({
     contextMenuPage: async ({ page }, use) => {
         const contextMenuPage = new ContextMenuPage(page);
         await use(contextMenuPage);
-    }
+    },
+    dropdownPage: async ({ page }, use) => {
+        const dropdownPage = new DropdownPage(page);
+        await use(dropdownPage);
+    },
 });
