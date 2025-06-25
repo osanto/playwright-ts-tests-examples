@@ -1,5 +1,5 @@
-import {Page, Locator} from '@playwright/test';
-import {BasePage} from './base-page';
+import { Page, Locator } from '@playwright/test';
+import { BasePage } from './base-page';
 
 export class ContextMenuPage extends BasePage {
     readonly pageHeader: Locator;
@@ -7,7 +7,7 @@ export class ContextMenuPage extends BasePage {
     readonly actionDescription: Locator;
     readonly contextMenuArea: Locator;
 
-    constructor (page: Page) {
+    constructor(page: Page) {
         super(page);
         this.pageHeader = this.page.locator('h3');
         this.contextMenuDescription = this.page.locator('.example p').first();

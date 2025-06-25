@@ -1,5 +1,5 @@
-import {Page, Locator} from '@playwright/test';
-import {BasePage} from './base-page';
+import { Page, Locator } from '@playwright/test';
+import { BasePage } from './base-page';
 
 export class ABTestingPage extends BasePage {
     readonly pageHeader: Locator;

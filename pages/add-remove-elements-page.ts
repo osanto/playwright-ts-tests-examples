@@ -1,12 +1,12 @@
-import {Page, Locator} from '@playwright/test';
-import {BasePage} from './base-page';
+import { Page, Locator } from '@playwright/test';
+import { BasePage } from './base-page';
 
 export class AddRemoveElementsPage extends BasePage {
     readonly pageHeader: Locator;
     readonly addElementButton: Locator;
     readonly deleteElementButton: Locator;
 
-    constructor (page: Page) {
+    constructor(page: Page) {
         super(page);
         this.pageHeader = this.page.locator('h3');
         this.addElementButton = this.page.locator('button:has-text("Add Element")');
@@ -16,6 +16,7 @@ export class AddRemoveElementsPage extends BasePage {
     async getPageHeader() {
         return await this.pageHeader.innerText();
     }
+    
     getAddElementButton() {
         return this.addElementButton;
     }

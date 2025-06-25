@@ -2,8 +2,8 @@ import { test } from '../fixture-pages';
 import { expect } from '@playwright/test';
 
 test.describe('A/B Testing page', () => {
-    test.beforeEach(async ({ abTestingPage }) => {
-        await abTestingPage.navigateTo('abtest');
+    test.beforeEach(async ({ mainPage }) => {
+        await mainPage.navigateTo('abtest');
     });
 
     test('Verify page content', async ({ abTestingPage }) => {
