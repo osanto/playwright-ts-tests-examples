@@ -13,10 +13,6 @@ export class DropdownPage extends BasePage {
         this.dropdownOptions = this.dropdownElement.locator('option');
     }
 
-    async getPageHeader() {
-        return await this.pageHeader.innerText();
-    }
-
     async selectOptionByValue(value: string) {
         await this.dropdownElement.selectOption(value);
     }

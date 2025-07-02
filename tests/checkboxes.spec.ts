@@ -7,11 +7,10 @@ test.describe('Checkboxes page', () => {
     });
 
     test('Verify page elements', async ({ checkboxesPage }) => {
-        const headerText = await checkboxesPage.getPageHeader();
+        await expect(checkboxesPage.pageHeader).toHaveText('Checkboxes');
         const firstCheckbox = checkboxesPage.firstCheckbox;
         const secondCheckbox = checkboxesPage.secondCheckbox;
 
-        expect(headerText).toBe('Checkboxes');
         await expect(firstCheckbox).not.toBeChecked();
         await expect(secondCheckbox).toBeChecked();
     });

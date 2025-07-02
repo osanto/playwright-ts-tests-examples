@@ -10,8 +10,4 @@ export class FileDownloadPage extends BasePage {
         this.pageHeader = this.page.locator('h3');
         this.filesToDownload = this.page.locator('.example a[href^="download"]');
     }
-
-    async getPageHeader() {
-        return await this.pageHeader.innerText();
-    }
 }

@@ -7,14 +7,13 @@ test.describe('Add/Remove Elements page', () => {
     });
 
     test('Verify page elements', async ({ addRemoveElementsPage }) => {
-        const header = await addRemoveElementsPage.getPageHeader();
+        await expect(addRemoveElementsPage.pageHeader).toHaveText('Add/Remove Elements');
         const addElementButton = addRemoveElementsPage.getAddElementButton();
         const deleteElementButtons = addRemoveElementsPage.getDeleteElementButtons();
 
-        expect(header).toEqual('Add/Remove Elements');
-        expect(addElementButton).toHaveText('Add Element');
-        expect(addElementButton).toHaveCount(1);
-        expect(deleteElementButtons).toHaveCount(0);
+        await expect(addElementButton).toHaveText('Add Element');
+        await expect(addElementButton).toHaveCount(1);
+        await expect(deleteElementButtons).toHaveCount(0);
     });
 
     test('Verify adding and deleting of an element', async ({ addRemoveElementsPage }) => {

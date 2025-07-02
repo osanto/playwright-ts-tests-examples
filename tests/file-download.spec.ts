@@ -7,8 +7,7 @@ test.describe('File Download page', () => {
     });
 
     test('Verify page elements', async ({ fileDownloadPage }) => {
-        const header = await fileDownloadPage.getPageHeader();
-        expect(header).toEqual('File Downloader');
+        await expect(fileDownloadPage.pageHeader).toHaveText('File Downloader');
 
         const downloadLinks = fileDownloadPage.filesToDownload;
         const count = await downloadLinks.count();

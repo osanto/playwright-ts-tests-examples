@@ -13,10 +13,6 @@ export class AddRemoveElementsPage extends BasePage {
         this.deleteElementButton = this.page.locator('button:has-text("Delete")');
     }
 
-    async getPageHeader() {
-        return await this.pageHeader.innerText();
-    }
-    
     getAddElementButton() {
         return this.addElementButton;
     }

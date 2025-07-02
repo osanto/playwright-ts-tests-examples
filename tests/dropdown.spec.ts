@@ -7,11 +7,10 @@ test.describe('Dropdown page', () => {
     });
     
     test('Verify page elements', async ({ dropdownPage }) => {
-        const headerText = await dropdownPage.getPageHeader();
+        await expect(dropdownPage.pageHeader).toHaveText('Dropdown List');
         const dropdownElement = dropdownPage.dropdownElement;
         const dropdownOptions = dropdownPage.dropdownOptions;
 
-        expect(headerText).toBe('Dropdown List');
         await expect.soft(dropdownElement).toBeVisible();
         await expect.soft(dropdownOptions).toHaveCount(3);
         await expect.soft(dropdownOptions.first()).toHaveText('Please select an option');

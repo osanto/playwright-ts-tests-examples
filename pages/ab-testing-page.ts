@@ -10,12 +10,4 @@ export class ABTestingPage extends BasePage {
         this.pageHeader = this.page.locator('h3');
         this.contentText = this.page.locator('div.example >p');
     }
-
-    async getPageHeader() {
-        return await this.pageHeader.innerText();
-    }
-
-    async getContentText() {
-        return await this.contentText.innerText();
-    }
 }

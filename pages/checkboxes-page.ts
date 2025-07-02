@@ -12,8 +12,4 @@ export class CheckboxesPage extends BasePage {
         this.firstCheckbox = this.page.locator('#checkboxes input[type="checkbox"]').nth(0);
         this.secondCheckbox = this.page.locator('#checkboxes input[type="checkbox"]').nth(1);
     }
-
-    async getPageHeader() {
-        return await this.pageHeader.innerText();
-    }
 }

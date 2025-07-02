@@ -10,8 +10,8 @@ test.describe('A/B Testing page', () => {
         const header = ['A/B Test Control', 'A/B Test Variation 1'];
         const text = 'Also known as split testing. This is a way in which businesses are able to simultaneously test and learn different versions of a page to see which text and/or functionality works best towards a desired outcome (e.g. a user action such as a click-through).';
 
-        expect(header).toContain(await abTestingPage.getPageHeader());
-        expect(await abTestingPage.getContentText()).toEqual(text);
+        await expect(abTestingPage.pageHeader).toHaveText(/A\/B Test (Control|Variation 1)/)
+        await expect(abTestingPage.contentText).toHaveText(text);
     });
 });
 
