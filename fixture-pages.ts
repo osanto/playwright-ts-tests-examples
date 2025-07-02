@@ -7,6 +7,7 @@ import { ContextMenuPage } from './pages/context-menu-page';
 import { DropdownPage } from './pages/dropdown-page';
 import { FileDownloadPage } from './pages/file-download-page'; 
 import { FileUploadPage } from './pages/file-upload-page';
+import { KeyPressesPage } from './pages/key-presses-page';
 
 type Pages = {
     mainPage: MainPage;
@@ -17,6 +18,7 @@ type Pages = {
     dropdownPage: DropdownPage;
     fileDownloadPage: FileDownloadPage;
     fileUploadPage: FileUploadPage;
+    keyPressesPage: KeyPressesPage;
 }
 
 export const test = base.extend<Pages>({
@@ -51,5 +53,9 @@ export const test = base.extend<Pages>({
     fileUploadPage: async ({ page }, use) => {
         const fileUploadPage = new FileUploadPage(page);
         await use(fileUploadPage);
+    },
+    keyPressesPage: async ({ page }, use) => {
+        const keyPressesPage = new KeyPressesPage(page);
+        await use(keyPressesPage);
     },
 });
