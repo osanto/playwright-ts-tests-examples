@@ -6,6 +6,7 @@ import { CheckboxesPage } from './pages/checkboxes-page';
 import { ContextMenuPage } from './pages/context-menu-page';
 import { DropdownPage } from './pages/dropdown-page';
 import { FileDownloadPage } from './pages/file-download-page'; 
+import { FileUploadPage } from './pages/file-upload-page';
 
 type Pages = {
     mainPage: MainPage;
@@ -15,6 +16,7 @@ type Pages = {
     contextMenuPage: ContextMenuPage;
     dropdownPage: DropdownPage;
     fileDownloadPage: FileDownloadPage;
+    fileUploadPage: FileUploadPage;
 }
 
 export const test = base.extend<Pages>({
@@ -45,5 +47,9 @@ export const test = base.extend<Pages>({
     fileDownloadPage: async ({ page }, use) => {
         const fileDownloadPage = new FileDownloadPage(page);
         await use(fileDownloadPage);
+    },
+    fileUploadPage: async ({ page }, use) => {
+        const fileUploadPage = new FileUploadPage(page);
+        await use(fileUploadPage);
     },
 });
