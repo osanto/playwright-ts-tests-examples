@@ -8,6 +8,7 @@ import { DropdownPage } from './pages/dropdown-page';
 import { FileDownloadPage } from './pages/file-download-page'; 
 import { FileUploadPage } from './pages/file-upload-page';
 import { KeyPressesPage } from './pages/key-presses-page';
+import { HoversPage } from './pages/hovers-page';
 
 type Pages = {
     mainPage: MainPage;
@@ -19,6 +20,7 @@ type Pages = {
     fileDownloadPage: FileDownloadPage;
     fileUploadPage: FileUploadPage;
     keyPressesPage: KeyPressesPage;
+    hoversPage: HoversPage;
 }
 
 export const test = base.extend<Pages>({
@@ -58,4 +60,8 @@ export const test = base.extend<Pages>({
         const keyPressesPage = new KeyPressesPage(page);
         await use(keyPressesPage);
     },
+    hoversPage: async ({ page }, use) => {
+        const hoversPage = new HoversPage(page);
+        await use(hoversPage);
+    }
 });
