@@ -1,5 +1,11 @@
 # Playwright TypeScript Test Automation Examples
 
+[![Playwright Tests](https://github.com/osanto/playwright-ts-tests-examples/actions/workflows/playwright.yml/badge.svg)](https://github.com/osanto/playwright-ts-tests-examples/actions/workflows/playwright.yml)
+[![Test Report](https://img.shields.io/badge/Test_Report-GitHub_Pages-blue)](https://osanto.github.io/playwright-ts-tests-examples/)
+![TypeScript](https://img.shields.io/badge/TypeScript-007ACC?style=flat&logo=typescript&logoColor=white)
+![Playwright](https://img.shields.io/badge/Playwright-45ba4b?style=flat&logo=playwright&logoColor=white)
+![Node.js](https://img.shields.io/badge/Node.js-339933?style=flat&logo=node.js&logoColor=white)
+
 ## About
 
 Playwright test automation examples using TypeScript with Page Object Model (POM) design pattern and custom fixtures.
@@ -202,19 +208,25 @@ BASE_URL=https://the-internet.herokuapp.com
 
 ## 📊 Test Reports
 
-After running tests, view the HTML report:
+### View Latest Test Report
 
-```bash
-npm run report
-```
+🔗 **[Live Test Report on GitHub Pages](https://osanto.github.io/playwright-ts-tests-examples/)**
 
-Reports include:
+The test report is automatically published after each CI run and includes:
 
 - Test execution summary
 - Pass/fail status
 - Execution time
 - Screenshots on failure
 - Trace files for debugging
+
+### View Local Test Report
+
+After running tests locally:
+
+```bash
+npm run report
+```
 
 ## 📝 Best Practices
 
