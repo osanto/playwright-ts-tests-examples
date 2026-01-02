@@ -10,7 +10,7 @@ test.describe('File Upload page', () => {
 
     test('Verify page elements', async ({ fileUploadPage }) => {
         await expect(fileUploadPage.pageHeader).toHaveText('File Uploader');
-        await expect(fileUploadPage.chooseFileButton).toBeVisible();
+        await expect(fileUploadPage.fileInput).toBeVisible();
         await expect(fileUploadPage.uploadButton).toBeVisible();    
         await expect(fileUploadPage.dragAndDropArea).toBeVisible();
     });

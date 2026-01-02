@@ -5,7 +5,7 @@ import { BasePage } from './base-page';
 
 export class FileUploadPage extends BasePage {
     readonly pageHeader: Locator;
-    readonly chooseFileButton: Locator;
+    readonly fileInput: Locator;
     readonly uploadButton: Locator;
     readonly dragAndDropArea: Locator;
     readonly uploadedFileName: Locator;
@@ -13,8 +13,8 @@ export class FileUploadPage extends BasePage {
     constructor(page: Page) {
         super(page);
         this.pageHeader = this.page.locator('h3');
-        this.chooseFileButton = this.page.getByRole('button', { name: 'Choose File' });
-        this.uploadButton = this.page.getByRole('button', { name: 'Upload' });
+        this.fileInput = this.page.locator('#file-upload');
+        this.uploadButton = this.page.locator('#file-submit');
         this.dragAndDropArea = this.page.locator('#drag-drop-upload');
         this.uploadedFileName = this.page.locator('#uploaded-files');
     }
@@ -24,7 +24,7 @@ export class FileUploadPage extends BasePage {
             throw new Error(`File not found: ${filePath}`);
         }
 
-        await this.page.setInputFiles('#file-upload', filePath);
+        await this.fileInput.setInputFiles(filePath);
         await this.uploadButton.click();
     }
 
