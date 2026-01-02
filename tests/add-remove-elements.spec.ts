@@ -8,25 +8,20 @@ test.describe('Add/Remove Elements page', () => {
 
     test('Verify page elements', async ({ addRemoveElementsPage }) => {
         await expect(addRemoveElementsPage.pageHeader).toHaveText('Add/Remove Elements');
-        const addElementButton = addRemoveElementsPage.getAddElementButton();
-        const deleteElementButtons = addRemoveElementsPage.getDeleteElementButtons();
-
-        await expect(addElementButton).toHaveText('Add Element');
-        await expect(addElementButton).toHaveCount(1);
-        await expect(deleteElementButtons).toHaveCount(0);
+        await expect(addRemoveElementsPage.addElementButton).toHaveText('Add Element');
+        await expect(addRemoveElementsPage.addElementButton).toHaveCount(1);
+        await expect(addRemoveElementsPage.deleteElementButtons).toHaveCount(0);
     });
 
     test('Verify adding and deleting of an element', async ({ addRemoveElementsPage }) => {
-        const deleteElementButtons = addRemoveElementsPage.getDeleteElementButtons();
-
         // Add an element
-        await addRemoveElementsPage.clickAddElementButton();
-        await expect(deleteElementButtons).toHaveCount(1);
-        await expect(deleteElementButtons).toHaveText('Delete');
+        await addRemoveElementsPage.addElementButton.click();
+        await expect(addRemoveElementsPage.deleteElementButtons).toHaveCount(1);
+        await expect(addRemoveElementsPage.deleteElementButtons).toHaveText('Delete');
 
         // Remove the added element
-        await addRemoveElementsPage.clickDeleteElementButton();
-        await expect(deleteElementButtons).toHaveCount(0);
+        await addRemoveElementsPage.deleteElementButtons.click();
+        await expect(addRemoveElementsPage.deleteElementButtons).toHaveCount(0);
     });
 
     test('Verify adding and deleting of multiple elements', async ({ addRemoveElementsPage }) => {
@@ -34,17 +29,16 @@ test.describe('Add/Remove Elements page', () => {
 
         // Add multiple elements
         for (let i = 0; i < addButtonCount; i++) {
-            await addRemoveElementsPage.clickAddElementButton();
+            await addRemoveElementsPage.addElementButton.click();
         }
 
         // Verify that 5 delete buttons are present
-        const deleteButtons = addRemoveElementsPage.getDeleteElementButtons();
-        await expect(deleteButtons).toHaveCount(addButtonCount);
+        await expect(addRemoveElementsPage.deleteElementButtons).toHaveCount(addButtonCount);
 
         // Remove all added elements
         for (let i = 0; i < addButtonCount; i++) {
-            await deleteButtons.nth(0).click(); 
-            await expect(deleteButtons).toHaveCount(addButtonCount - i - 1); 
+            await addRemoveElementsPage.deleteElementButtons.nth(0).click(); 
+            await expect(addRemoveElementsPage.deleteElementButtons).toHaveCount(addButtonCount - i - 1); 
         }
     });
 });
